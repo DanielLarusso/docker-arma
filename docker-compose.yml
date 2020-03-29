@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  arma:
+    image: synixebrett/arma3server
+    ports:
+      - 2302:2302
+      - 2303:2303
+      - 2304:2304
+      - 2305:2305
+    volumes:
+      - ./data/arma/mpmissions:/arma/mpmissions
+      - ./data/arma/configs:/arma/configs
+      - ./data/arma/mods:/arma/mods
+      - ./data/arma/servermods:/arma/servermods
+    environment:
+      ARMA_CONFIG: ${ARMA_CONFIG}
+      STEAM_USER: ${STEAM_USER}
+      STEAM_PASSWORD: ${STEAM_PASSWORD}
