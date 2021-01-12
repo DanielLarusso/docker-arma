@@ -11,7 +11,6 @@ ENV ARMASERVERCONFIG ${ARMASERVERCONFIG:-server.cfg}
 ENV ARMABASICCONFIG ${ARMABASICCONFIG:-basic.cfg}
 
 RUN set -x \
-    && apt-get update \
     && mkdir -p "${STEAMAPPDIR}" \
     && { \
             echo '@ShutdownOnFailedCommand 1'; \
