@@ -1,3 +1,4 @@
 .idea
 .env
-/data/arma/*
+data/arma/configs/basic.cfg
+server.cfg

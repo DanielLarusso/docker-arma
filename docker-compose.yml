@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   arma:
-    build: .
+    image: synixebrett/arma3server
     ports:
       - 2302:2302
       - 2303:2303
@@ -15,5 +15,7 @@ services:
       - ./data/arma/mods:/home/steam/arma3server/mods
       - ./data/arma/servermods:/home/steam/arma3server/servermods
     environment:
-      STEAMACCUSER: ${STEAMACCUSER}
-      STEAMACCPASSWORD: ${STEAMACCPASSWORD}
+      ARMA_BINARY: ${ARMA_BINARY}
+      ARMA_CONFIG: ${ARMA_CONFIG}
+      STEAM_PASSWORD: ${STEAM_PASSWORD}
+      STEAM_USER: ${STEAM_USER}

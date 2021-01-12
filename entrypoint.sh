@@ -8,4 +8,4 @@ bash "${STEAMCMDDIR}/steamcmd.sh" +login ${STEAMACCUSER} ${STEAMACCPASSWORD} \
 
 cd ${STEAMAPPDIR}
 
-bash "${STEAMAPPDIR}/arma3server" -port=2302, -config="./configs/server.cfg" -cfg="./configs/basic.cfg" -name="default" -world="empty"
+#bash "${STEAMAPPDIR}/arma3server" -port=2302, -config="./configs/server.cfg" -cfg="./configs/basic.cfg" -name="default" -world="empty"

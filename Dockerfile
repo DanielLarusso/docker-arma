@@ -22,10 +22,12 @@ RUN set -x \
 
 COPY entrypoint.sh ${HOMEDIR}/entrypoint.sh
 COPY server.cfg ${STEAMAPPDIR}/configs/server.cfg
-COPY basic.cfg ${STEAMAPPDIR}/configs/basic.cfg
+COPY data/arma/configs/basic.cfg ${STEAMAPPDIR}/configs/basic.cfg
+
+USER root
 
 RUN chmod -x "${HOMEDIR}/entrypoint.sh" \
-#    && chown -R "${USER}:${USER}" "${HOMEDIR}/entrypoint.sh" "${STEAMAPPDIR}" "${HOMEDIR}/${STEAMAPP}_update.txt" \
+    && chown -R "${USER}:${USER}" "${HOMEDIR}/entrypoint.sh" "${STEAMAPPDIR}" "${HOMEDIR}/${STEAMAPP}_update.txt" \
     && rm -rf /var/lib/apt/lists/*
 
 USER ${USER}
