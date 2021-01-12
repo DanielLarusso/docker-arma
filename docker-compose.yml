@@ -10,10 +10,10 @@ services:
       - 2305:2305
       - 2306:2306
     volumes:
-      - ./data/arma/mpmissions:/home/steam/arma3server/mpmissions
-      - ./data/arma/configs:/home/steam/arma3server/configs
-      - ./data/arma/mods:/home/steam/arma3server/mods
-      - ./data/arma/servermods:/home/steam/arma3server/servermods
+      - ./data/arma/mpmissions:/home/steam/arma3/mpmissions
+      - ./data/arma/configs:/home/steam/arma3/configs
+      - ./data/arma/mods:/home/steam/arma3/mods
+      - ./data/arma/servermods:/home/steam/arma3/servermods
     environment:
       ARMA_BINARY: ${ARMA_BINARY}
       ARMA_CONFIG: ${ARMA_CONFIG}
