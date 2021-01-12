@@ -1,22 +1,42 @@
-FROM cm2network/steamcmd
+# Dockerfile for AmrA 3 Dedicated Server
 
-ENV STEAMAPPID ${STEAMAPPID:-233780}
-ENV STEAMAPPDIR ${STEAMAPPDIR:-/home/steam/arma3server}
+FROM cm2network/steamcmd:latest
+
+LABEL maintainer="daniel.pogodda@googlemail.com"
+
+ENV STEAMAPPID 233780
+ENV STEAMAPP arma3server
+ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}"
 ENV ARMASERVERCONFIG ${ARMASERVERCONFIG:-server.cfg}
 ENV ARMABASICCONFIG ${ARMABASICCONFIG:-basic.cfg}
-ENV ARMABASICCONFIG ${ARMABASICCONFIG:-basic.cfg}
 
-RUN ${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit
-RUN echo 233780 > ${STEAMCMDDIR}/steam_appid.txt
+RUN set -x \
+    && apt-get update \
+    && mkdir -p "${STEAMAPPDIR}" \
+    && { \
+            echo '@ShutdownOnFailedCommand 1'; \
+            echo '@NoPromptForPassword 1'; \
+            echo 'login ${STEAMACCUSER} ${STEAMACCPASSWORD}'; \
+            echo 'force_install_dir '"${STEAMAPPDIR}"''; \
+            echo 'quit'; \
+        } > "${HOMEDIR}/${STEAMAPP}_update.txt"
 
-COPY entrypoint.sh ${STEAMAPPDIR}/entrypoint.sh
+COPY entrypoint.sh ${HOMEDIR}/entrypoint.sh
 
-WORKDIR $STEAMAPPDIR
+RUN chmod -x "${HOMEDIR}/entrypoint.sh" \
+    && chown -R "${USER}:${USER}" "${HOMEDIR}/entrypoint.sh" "${STEAMAPPDIR}" "${HOMEDIR}/${STEAMAPP}_update.txt" \
+    && rm -rf /var/lib/apt/lists/*
 
-USER steam
+USER ${USER}
 
-ENTRYPOINT ["/home/steam/arma3server/entrypoint.sh"]
+VOLUME ${STEAMAPPDIR}
 
-VOLUME $STEAMAPPDIR
+WORKDIR ${HOMEDIR}
 
-CMD ["./arma3server", "-port=2302", "-config=./configs/server.cfg", "-cfg=./configs/basic.cfg", "-name=default", "-world=empty"]
+CMD ["bash", "entrypoint.sh"]
+
+EXPOSE 2302/udp \
+        2303/udp \
+        2304/udp \
+        2305/udp \
+        2306/udp
