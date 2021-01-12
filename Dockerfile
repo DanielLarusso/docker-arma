@@ -21,6 +21,8 @@ RUN set -x \
         } > "${HOMEDIR}/${STEAMAPP}_update.txt"
 
 COPY entrypoint.sh ${HOMEDIR}/entrypoint.sh
+COPY server.cfg ${STEAMAPPDIR}/configs/server.cfg
+COPY basic.cfg.dist ${STEAMAPPDIR}/configs/basic.cfg
 
 RUN chmod -x "${HOMEDIR}/entrypoint.sh" \
     && chown -R "${USER}:${USER}" "${HOMEDIR}/entrypoint.sh" "${STEAMAPPDIR}" "${HOMEDIR}/${STEAMAPP}_update.txt" \
