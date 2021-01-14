@@ -2,20 +2,21 @@ version: "3.7"
 
 services:
   arma:
-    image: synixebrett/arma3server
+    build: .
     ports:
-      - 2302:2302
-      - 2303:2303
-      - 2304:2304
-      - 2305:2305
-      - 2306:2306
+      - "2302:2302/udp"
+      - "2303:2303/udp"
+      - "2304:2304/udp"
+      - "2305:2305/udp"
+      - "2306:2306/udp"
     volumes:
-      - ./data/arma/mpmissions:/home/steam/arma3/mpmissions
-      - ./data/arma/configs:/home/steam/arma3/configs
-      - ./data/arma/mods:/home/steam/arma3/mods
-      - ./data/arma/servermods:/home/steam/arma3/servermods
-    environment:
-      ARMA_BINARY: ${ARMA_BINARY}
-      ARMA_CONFIG: ${ARMA_CONFIG}
-      STEAM_PASSWORD: ${STEAM_PASSWORD}
-      STEAM_USER: ${STEAM_USER}
+      - ./configs/server.cfg:/home/steam/arma3server/configs/server.cfg
+      - ./configs/basic.cfg:/home/steam/arma3server/configs/basic.cfg
+      - ./keys:/home/steam/arma3server/keys
+      - ./mods:/home/steam/arma3server/mods
+      - ./mpmissions:/home/steam/arma3server/mpmissions
+      - ./profiles:/home/steam/arma3server/profiles
+      - ./servermods:/home/steam/arma3server/servermods
+#    environment:
+#      STEAMUSER: ${STEAMUSER}
+#      STEAMPASSWORD: ${STEAMPASSWORD}

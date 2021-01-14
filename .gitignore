@@ -1,4 +1,4 @@
 .idea
 .env
-data/arma/configs/basic.cfg
+configs/basic.cfg
 server.cfg
