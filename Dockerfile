@@ -27,6 +27,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN dpkg --add-architecture i386 \
  && apt-get update \
  && apt-get install -y --no-install-recommends --no-install-suggests \
+    ibsdl2-2.0-0:i386 \
     ca-certificates \
     steamcmd \
  && apt-get clean autoclean \
