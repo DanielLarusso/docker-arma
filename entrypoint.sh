@@ -15,11 +15,11 @@ steamcmd \
 
 # start the arma 3 server
 ./${ARMA3SERVER_BINARY} \
-    -port=2302 \
-    -config="${ARMA3SERVER_DIR}/configs/server.cfg" \
-    -cfg="${ARMA3SERVER_DIR}/configs/basic.cfg" \
+    -port="2302" \
+    -config="configs/server.cfg" \
+    -cfg="configs/basic.cfg" \
     -name="default" \
     -world="empty" \
-    -profile="${ARMA3SERVER_DIR}/profiles"
+    -profile="profiles" \
     -mod={${ARMA3SERVER_PARAMETER_MOD}} \
     -serverMod={${ARMA3SERVER_PARAMETER_SERVERMOD}}

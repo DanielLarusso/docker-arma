@@ -1,4 +1,10 @@
 .idea
 .env
-configs/basic.cfg
-server.cfg
+configs/*
+keys/*
+mods/*
+mpmissions/*
+profiles/*
+servermods/*
+!.gitkeep
+!*.dist
