@@ -20,6 +20,6 @@ steamcmd \
     -cfg="configs/basic.cfg" \
     -name="default" \
     -world="empty" \
-    -profile="profiles" \
+    -profiles="profiles" \
     -mod={${ARMA3SERVER_PARAMETER_MOD}} \
     -serverMod={${ARMA3SERVER_PARAMETER_SERVERMOD}}
