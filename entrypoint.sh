@@ -22,4 +22,5 @@ steamcmd \
     -world="empty" \
     -profiles="profiles" \
     -mod={${ARMA3SERVER_PARAMETER_MOD}} \
-    -serverMod={${ARMA3SERVER_PARAMETER_SERVERMOD}}
+    -serverMod={${ARMA3SERVER_PARAMETER_SERVERMOD}} \
+    -loadMissionToMemory
