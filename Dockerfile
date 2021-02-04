@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM daniellarusso/steamcmd
 
 # ubuntu user data
 ARG PUID=1000
