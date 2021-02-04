@@ -5,6 +5,8 @@ services:
     build:
       context: .
       args:
+        - ARMA3SERVER_PARAMETER_MOD=${ARMA3SERVER_PARAMETER_MOD}
+        - ARMA3SERVER_PARAMETER_SERVERMOD=${ARMA3SERVER_PARAMETER_SERVERMOD}
         - STEAM_ACCOUNT_USER=${STEAM_ACCOUNT_USER}
         - STEAM_ACCOUNT_PASSWORD=${STEAM_ACCOUNT_PASSWORD}
     ports:
@@ -14,15 +16,9 @@ services:
       - "2305:2305/udp"
       - "2306:2306/udp"
     volumes:
-      - ./configs/server.cfg:/home/steam/arma3server/configs/server.cfg
-      - ./configs/basic.cfg:/home/steam/arma3server/configs/basic.cfg
+      - ./configs:/home/steam/arma3server/configs
       - ./keys:/home/steam/arma3server/keys
       - ./mods:/home/steam/arma3server/mods
       - ./mpmissions:/home/steam/arma3server/mpmissions
       - ./profiles:/home/steam/arma3server/profiles
       - ./servermods:/home/steam/arma3server/servermods
-    environment:
-      - ARMA3SERVER_PARAMETER_MOD=${ARMA3SERVER_PARAMETER_MOD}
-      - ARMA3SERVER_PARAMETER_SERVERMOD=${ARMA3SERVER_PARAMETER_SERVERMOD}
-      - STEAM_ACCOUNT_USER=${STEAM_ACCOUNT_USER}
-      - STEAM_ACCOUNT_PASSWORD=${STEAM_ACCOUNT_PASSWORD}
