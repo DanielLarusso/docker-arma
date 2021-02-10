@@ -21,6 +21,14 @@ services:
 
   ftp:
     image: daniellarusso/vsftpd
+    build:
+      args:
+        - FTP_USER_UID=${FTP_USER_UID:-1000}
+        - FTP_USER_NAME=${FTP_USER_NAME:-vsftpd}
+        - FTP_USER_PASSWORD=${FTP_USER_PASSWORD}
+        - FTP_PORT=${FTP_PORT:-21}
+        - FTP_PASV_PORT_MIN=${FTP_PASV_PORT_MIN:-21000}
+        - FTP_PASV_PORT_MAX=${FTP_PASV_PORT_MAX:-21010}
     ports:
       - "21:21"
     volumes:
