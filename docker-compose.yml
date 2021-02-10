@@ -22,6 +22,7 @@ services:
   ftp:
     image: daniellarusso/vsftpd
     build:
+      context: .
       args:
         - FTP_USER_UID=${FTP_USER_UID:-1000}
         - FTP_USER_NAME=${FTP_USER_NAME:-vsftpd}
