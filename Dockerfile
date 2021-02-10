@@ -1,4 +1,4 @@
-FROM daniellarusso/steamcmd
+FROM daniellarusso/steamcmd:ubuntu-bionic
 
 ARG STEAM_ACCOUNT_USER=${STEAM_ACCOUNT_USER}
 ARG STEAM_ACCOUNT_PASSWORD=${STEAM_ACCOUNT_PASSWORD}
@@ -23,6 +23,6 @@ RUN chmod +x ${ARMA3SERVER_DIR}/entrypoint.sh
 
 WORKDIR ${ARMA3SERVER_DIR}
 
-EXPOSE 2302/udp 2303/udp 2304/udp 2305/udp 2306/udp
+EXPOSE 2302-2306/udp
 
 ENTRYPOINT ["./entrypoint.sh"]

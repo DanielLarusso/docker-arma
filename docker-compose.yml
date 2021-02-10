@@ -10,15 +10,11 @@ services:
         - STEAM_ACCOUNT_USER=${STEAM_ACCOUNT_USER}
         - STEAM_ACCOUNT_PASSWORD=${STEAM_ACCOUNT_PASSWORD}
     ports:
-      - "2302:2302/udp"
-      - "2303:2303/udp"
-      - "2304:2304/udp"
-      - "2305:2305/udp"
-      - "2306:2306/udp"
+      - "2302-2306:2302-2306/udp"
     volumes:
       - ./configs:/home/steam/arma3server/configs
       - ./keys:/home/steam/arma3server/keys
-      - mods:/home/steam/arma3server/mods
+      - ./mods:/home/steam/arma3server/mods
       - ./mpmissions:/home/steam/arma3server/mpmissions
       - ./profiles:/home/steam/arma3server/profiles
       - ./servermods:/home/steam/arma3server/servermods
@@ -28,7 +24,4 @@ services:
     ports:
       - "21:21"
     volumes:
-      - mods:/var/lib/ftp
-
-volumes:
-  mods:
+      - ./mods:/var/lib/ftp
